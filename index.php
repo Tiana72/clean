@@ -1,56 +1,41 @@
 <?php
-/**
- * The main template file
- *
- * This is the most generic template file in a WordPress theme
- * and one of the two required files for a theme (the other being style.css).
- * It is used to display a page when nothing more specific matches a query.
- * E.g., it puts together the home page when no home.php file exists.
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
- * @package clean
- */
-
 get_header();
 ?>
 
-	<main id="primary" class="site-main">
+<main id="primary" class="site-main">
+    <div id="fh5co-portfolio">
+        <?php $query = new WP_Query( array (
+            'category_name' => 'home',
+        ) ); ?>
+        <?php if ($query->have_posts()): while ($query->have_posts()): $query->the_post();?>
+            <?php
+                if ( has_post_thumbnail() ) {
+                    $img_url = get_the_post_thumbnail_url();
+                } else {
+                    $img_url = 'https://picsum.photos/1280/864';
+                }
+            ?>
+            <!-- пост -->
+            <div class="fh5co-portfolio-item fh5co-img-right">
+                <div class="fh5co-portfolio-figure animate-box" style="background-image: url(<?php echo $img_url; ?>);"></div>
+                <div class="fh5co-portfolio-description">
+                    <h2>Project Second</h2>
+                    <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+                    <p><a href="#" class="btn btn-primary">Read the casetudy</a></p>
+                </div>
+            </div>
 
-		<?php
-		if ( have_posts() ) :
+        <?php endwhile; ?>
+            <!-- навигация -->
 
-			if ( is_home() && ! is_front_page() ) :
-				?>
-				<header>
-					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-				</header>
-				<?php
-			endif;
+        <?php else: ?>
+            <!-- нет постов -->
 
-			/* Start the Loop */
-			while ( have_posts() ) :
-				the_post();
+        <?php endif; ?>
+    </div>
 
-				/*
-				 * Include the Post-Type-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', get_post_type() );
 
-			endwhile;
-
-			the_posts_navigation();
-
-		else :
-
-			get_template_part( 'template-parts/content', 'none' );
-
-		endif;
-		?>
-
-	</main><!-- #main -->
+</main><!-- #main -->
 
 <?php
 get_footer();
