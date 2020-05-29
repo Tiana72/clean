@@ -1,10 +1,17 @@
 <?php
 get_header();
 ?>
-index
+front
+<?php if( get_theme_mod('clean_home_category') ) : ?>
 <main id="primary" class="site-main">
     <div id="fh5co-portfolio">
-        <?php if (have_posts()) : $i = 1; while (have_posts()): the_post();?>
+        <?php $query = new WP_Query( array (
+            'category_name' => get_theme_mod('clean_home_category'),
+            'posts_per_page' => '-1',
+            'orderby' => 'date',
+            'order' => 'ASC',
+            ) ); ?>
+        <?php if ($query->have_posts()) : $i = 1; while ($query->have_posts()): $query->the_post();?>
             <?php
                 if ( has_post_thumbnail() ) {
                     $img_url = get_the_post_thumbnail_url();
@@ -29,10 +36,21 @@ index
             <!-- нет постов -->
 
         <?php endif; ?>
+        <?php wp_reset_postdata(); ?>
     </div>
 
 
 </main><!-- #main -->
+<?php endif; ?>
+
+<?php if (have_posts()): while (have_posts()): the_post();?>
+<!-- пост -->
+    <?php the_content() ; ?>
+<?php endwhile; ?>
+<!-- навигация -->
+<?php else: ?>
+<!-- нет постов -->
+<?php endif; ?>
 
 <?php
 get_footer();

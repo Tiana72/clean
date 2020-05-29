@@ -29,7 +29,6 @@ if ( ! function_exists( 'clean_setup' ) ) :
 		 */
 		load_theme_textdomain( 'clean', get_template_directory() . '/languages' );
 
-		add_theme_support( 'post-formats', array( 'aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat' ) );
 
 		// Add default posts and comments RSS feed links to head.
 		add_theme_support( 'automatic-feed-links' );
@@ -43,11 +42,12 @@ if ( ! function_exists( 'clean_setup' ) ) :
 		add_theme_support( 'title-tag' );
 
 		/*
-		 * Enable support for Post Thumbnails on posts and pages.
+		 * Enable support for Post Thumbnails and Formats on posts and pages.
 		 *
 		 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 		 */
 		add_theme_support( 'post-thumbnails' );
+		add_theme_support( 'post-formats', array( 'aside', 'gallery', 'link', 'image', 'quote', 'status', 'video', 'audio', 'chat' ) );
 
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus(
@@ -202,4 +202,5 @@ require get_template_directory() . '/inc/customizer.php';
 if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
+
 
