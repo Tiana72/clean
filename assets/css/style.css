@@ -8261,3 +8261,86 @@ a > img.fh5co-align-center {
 }
 
 /*# sourceMappingURL=style.css.map */
+
+#fh5co-team .fw-row > div,
+#fh5co-services .fw-iconbox-image {
+  opacity: 0;
+}
+.fw-main-row h2 {
+  font-size: 40px;
+  line-height: 50px;
+  margin-bottom: 1em;
+  font-family: "Roboto Slab", arial, sans-serif;
+}
+#fh5co-team h3 {
+  font-size: 18px;
+  line-height: 22px;
+  position: relative;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  margin-top: 30px;
+}
+#fh5co-team h3::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background: #e32929;
+}
+#fh5co-team i {
+  font-size: 20px;
+  margin-right: 10px;
+}
+#fh5co-team a {
+  color: #ccc;
+}
+#fh5co-team a:hover {
+  color: #000;
+  text-decoration: none;
+}
+#fh5co-team a:active {
+  outline: none;
+  text-decoration: none;
+}
+#fh5co-services .fw-iconbox-image {
+  float: left;
+  width: 20%;
+}
+#fh5co-services .fw-iconbox-image i {
+  font-size: 40px;
+  color: #e32929;
+}
+.fw-iconbox-aside {
+  width: 70%;
+  float: right;
+  text-align: left;
+}
+#fh5co-services h3 {
+  margin-top: 0;
+  font-size: 18px;
+  font-weight: 300;
+}
+a.btn:visited {
+  color: #fff;
+}
+.pagination {
+  text-align: center;
+  width: 100%;
+}
+.pagination li {
+  display: inline-block;
+}
+.pagination li a,
+.pagination li span {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  display: block;
+}
+.pagination li span.current {
+  color: #fff;
+  background-color: #e32929;
+}

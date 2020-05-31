@@ -1,35 +1,31 @@
 <?php
 get_header();
 ?>
-index
+
 <main id="primary" class="site-main">
     <div id="fh5co-portfolio">
         <?php if (have_posts()) : $i = 1; while (have_posts()): the_post();?>
-            <?php
-                if ( has_post_thumbnail() ) {
-                    $img_url = get_the_post_thumbnail_url();
-                } else {
-                    $img_url = 'https://picsum.photos/1280/864';
-                }
-            ?>
-            <!-- пост -->
-            <div class="fh5co-portfolio-item <?php if( $i % 2 == 0 ) echo 'fh5co-img-right'; ?>">
-                <div class="fh5co-portfolio-figure animate-box" style="background-image: url(<?php echo $img_url; ?>);"></div>
-                <div class="fh5co-portfolio-description">
-                    <h2><?php the_title(); ?></h2>
-                    <p><?php the_content(''); ?></p>
-                    <p><a href="<?php the_permalink(); ?>" class="btn btn-primary"><?php _e('Read more', 'clean') ; ?></a></p>
-                </div>
-            </div>
-
+            <?php get_template_part('template-parts/content', 'preview'); ?>
         <?php $i++; endwhile; ?>
             <!-- навигация -->
+        <?php the_posts_pagination(array(
+            'show_all'     => false,
+            'end_size'     => 2,
+            'mid_size'     => 2,
+            'prev_next'    => true,
+            'prev_text'    => __('<< Prev', 'clear'),
+            'next_text'    => __('Next >>', 'clear'),
+            'type'         => 'list',
+            'add_args'     => false,
+            'add_fragment' => '',
+        ) ); ?>
 
         <?php else: ?>
             <!-- нет постов -->
 
         <?php endif; ?>
     </div>
+    <div class="clearfix"></div>
 
 
 </main><!-- #main -->
