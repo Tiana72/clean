@@ -42,6 +42,7 @@
 		}
 	};
 
+	$( 'body.single .fh5co-portfolio-description p' ).addClass('animate-box');
 
 	// Animate Leadership
 	var animateTeam = function() {

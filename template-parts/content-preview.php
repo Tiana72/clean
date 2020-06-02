@@ -6,7 +6,7 @@ if ( has_post_thumbnail() ) {
 }
 global $i;
 ?>
-<!-- пост -->
+<!-- пост --> 
 <div class="fh5co-portfolio-item <?php if( $i % 2 == 0 ) echo 'fh5co-img-right'; ?>">
     <div class="fh5co-portfolio-figure animate-box" style="background-image: url(<?php echo $img_url; ?>);"></div>
     <div class="fh5co-portfolio-description">
